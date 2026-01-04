@@ -438,10 +438,11 @@ textarea:focus {
 }
 
 .settings-row { 
-  display:flex; 
+  display:grid; 
   align-items:center; 
   justify-content:space-between; 
   padding:10px 0; 
+  grid-template-columns: 10fr 1fr;
   border-bottom:1px dashed var(--light-grey); 
 }
 
@@ -456,6 +457,12 @@ textarea:focus {
   display:flex; 
   align-items:center; 
   gap:8px; 
+}
+
+.settings-row-bottom {
+  color:var(--green); 
+  font-size: 0.70rem;
+  
 }
 
 .toggle-switch { 

@@ -134,7 +134,7 @@ export default function Settings() {
 
       <div className="settings-card">
         <div className="settings-row">
-          <div className="settings-row-left">Allow rereading books</div>
+          <div className="settings-row-left">Allow re-reading books</div>
           <div className="settings-row-right">
             <label className="toggle-switch">
               <input
@@ -145,10 +145,13 @@ export default function Settings() {
               <span className="slider" />
             </label>
           </div>
+          <div className="settings-row-bottom">
+            If enabled, you can mark books as read multiple times in your diary.
+          </div>
         </div>
 
         <div className="settings-row">
-          <div className="settings-row-left">Show most recent read</div>
+          <div className="settings-row-left">Most recent read date</div>
           <div className="settings-row-right">
             <label className="toggle-switch">
               <input
@@ -159,7 +162,10 @@ export default function Settings() {
               <span className="slider" />
             </label>
           </div>
-        </div>
+          <div className="settings-row-bottom">
+            If enabled, books will be marked as read on the most recent date they were read when searching. Otherwise, the first read date will be used.
+          </div>
+          </div>
       </div>
 
       <div className="settings-card diary-data">
