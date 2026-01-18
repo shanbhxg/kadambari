@@ -32,6 +32,7 @@ async function importDiaryFromCSV(file, user) {
         ? Number(entry.firstPublishYear)
         : null,
       notes: entry.notes || "",
+      status: "read",
       createdAt: entry.createdAt ? new Date(entry.createdAt) : new Date()
     });
   }
@@ -49,6 +50,7 @@ async function exportDiaryToCSV(user) {
       "coverId",
       "firstPublishYear",
       "notes",
+      "status",
       "createdAt"
     ]
   ];
@@ -62,6 +64,7 @@ async function exportDiaryToCSV(user) {
       d.coverId ?? "",
       d.firstPublishYear ?? "",
       (d.notes || "").replace(/\n/g, " "),
+      d.status ?? "read",
       d.createdAt?.toDate ? d.createdAt.toDate().toISOString() : ""
     ]);
   });

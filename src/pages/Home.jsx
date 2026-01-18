@@ -12,6 +12,7 @@ import { coverUrl } from "../api/openlib";
 
 export default function Home() {
   const [entries, setEntries] = useState([]);
+  const [filter, setFilter] = useState("all");
 
   async function deleteEntry(entryId) {
     if (!window.confirm("Are you sure you want to delete this entry?")) return;
@@ -48,8 +49,21 @@ export default function Home() {
   return (
     <div className="home">
       <h2>Your Diary</h2>
+      <div className="year-switcher">
+        {["all","tbr","reading","read","paused","interested"].map(s => (
+          <button
+            key={s}
+            className={filter === s ? "active" : ""}
+            onClick={() => setFilter(s)}
+          >
+            {s.toUpperCase()}
+          </button>
+        ))}
+      </div>
 
-      {entries.map(e => (
+      {entries
+        .filter(e => filter === "all" ? true : e.status === filter)
+        .map(e => (
         <div key={e.id} className="entry-card">
           <div className="entry-top">
             <img
@@ -60,7 +74,11 @@ export default function Home() {
 
             <div className="entry-main">
               <div className="entry-title">{e.title}</div>
-
+              {filter === "all" && (
+              <span className={`status-pill ${e.status}`}>
+                {e.status.toUpperCase()}
+              </span>
+            )}
               <div className="entry-meta">
                 <p>{e.author}</p>
                 <p>{e.firstPublishYear ?? "—"}</p>
@@ -76,11 +94,12 @@ export default function Home() {
           </div>
 
           <div className="entry-notes">
-            <p>
-              <strong>Read on:</strong>{" "}
-              {e.createdAt?.toDate().toLocaleDateString() || "N/A"}
-            </p>
-
+          {e.status === "read" && (
+              <p>
+                <strong>Read on:</strong>{" "}
+                {e.createdAt?.toDate().toLocaleDateString() || "N/A"}
+              </p>
+            )}
             {e.notes && (
               <>
                 <strong>Your Notes:</strong>

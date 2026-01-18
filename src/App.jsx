@@ -26,7 +26,7 @@ export default function App() {
 
       snap.forEach(doc => {
         const d = doc.data();
-        if (!d?.workKey || !d?.createdAt) return;
+        if (!d?.workKey || d.status !== "read" || !d.createdAt) return;
 
         const ts = d.createdAt?.toDate?.() ?? new Date(d.createdAt);
         if (isNaN(ts)) return;

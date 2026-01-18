@@ -437,6 +437,10 @@ textarea:focus {
   opacity:0.8; 
 }
 
+select.input {
+  width: 100%;
+}
+
 .settings-row { 
   display:grid; 
   align-items:center; 
@@ -501,11 +505,11 @@ textarea:focus {
   box-shadow:0 1px 2px rgba(0,0,0,0.06); 
 }
 
-.toggle-switch input:checked + .slider { 
+.toggle-switch input:checked  .slider { 
   background-color: var(--green)
 }
 
-.toggle-switch input:checked + .slider:before { 
+.toggle-switch input:checked  .slider:before { 
   transform:translateX(24px); 
 }
 
@@ -737,3 +741,43 @@ textarea:focus {
   .user-info-card { flex-direction:column; align-items:stretch; gap:10px; }
   .diary-actions { flex-direction:column; align-items:flex-start; gap:8px; }
 }
+
+/* ==== STATUS ==== */
+.status-pill {
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: -3px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    width: fit-content;
+  }
+  
+  .status-pill.read {
+    background: #dcfce7;
+    color: #166534;
+  }
+  
+  .status-pill.reading {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+  
+  .status-pill.tbr {
+    background: #fef9c3;
+    color: #854d0e;
+  }
+  
+  .status-pill.interested {
+    background: #f3e8ff;
+    color: #6b21a8;
+  }
+  
+  .status-pill.paused {
+    background: #fee2e2;
+    color: #7f1d1d;
+  }
+  
